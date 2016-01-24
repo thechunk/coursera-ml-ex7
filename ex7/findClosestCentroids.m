@@ -22,6 +22,20 @@ idx = zeros(size(X,1), 1);
 %
 
 
+for i = 1:size(X, 1)
+	x = X(i, :);
+	min = 0;
+	minIdx = 0;
+	for j = 1:K
+		c = centroids(j, :);
+		v = sum((x - c) .^ 2);
+		if (min == 0 || v < min)
+			min = v;
+			minIdx = j;
+		endif
+	endfor
+	idx(i) = minIdx;
+endfor
 
 
 
